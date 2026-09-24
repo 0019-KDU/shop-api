@@ -1,0 +1,37 @@
+# Backstage catalog entry. Annotations connect this service to its tools:
+# GitHub (repo + Actions runs), TechDocs, Amazon ECS (prod service), Cost Insights.
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: shop-api
+  description: "Shop API: products and orders (NestJS modular monolith)"
+  annotations:
+    github.com/project-slug: 0019-KDU/shop-api
+    backstage.io/techdocs-ref: dir:.
+    # Costs tab: everything tagged component=<name> in every environment (ECS, RDS, ECR, logs)
+    aws.amazon.com/cost-insights-tags: component=shop-api
+    # ECS tab: the production service (blue/green, autoscaling)
+    aws.amazon.com/amazon-ecs-service-arn: arn:aws:ecs:ap-south-1:697502032879:service/devops94-idp-prod-cluster/shop-api
+  tags:
+    - typescript
+    - nestjs
+    - modular-monolith
+    - aws-ecs
+  links:
+    - url: http://devops94-idp-dev-alb-754517378.ap-south-1.elb.amazonaws.com/shop-api/
+      title: dev
+      icon: web
+    - url: http://devops94-idp-staging-alb-575975725.ap-south-1.elb.amazonaws.com/shop-api/
+      title: staging
+      icon: web
+    - url: http://devops94-idp-prod-alb-793088738.ap-south-1.elb.amazonaws.com/shop-api/
+      title: prod
+      icon: web
+    - url: https://ap-south-1.console.aws.amazon.com/ecs/v2/clusters/devops94-idp-prod-cluster/services/shop-api/deployments?region=ap-south-1
+      title: Prod deployments (ECS console)
+      icon: cloud
+spec:
+  type: service
+  lifecycle: experimental
+  owner: group:default/platform-admins
+  system: idp-demo

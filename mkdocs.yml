@@ -1,0 +1,8 @@
+site_name: shop-api
+site_description: "Shop API: products and orders (NestJS modular monolith)"
+nav:
+  - Overview: index.md
+  - Architecture: architecture.md
+  - Environments & deployments: operations.md
+plugins:
+  - techdocs-core
