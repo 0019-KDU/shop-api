@@ -1,8 +1,17 @@
 site_name: shop-api
-site_description: "Shop API: products and orders (NestJS modular monolith)"
+site_description: 'Shop API: products and orders (NestJS modular monolith)'
 nav:
   - Overview: index.md
+  - Getting started: getting-started.md
   - Architecture: architecture.md
-  - Environments & deployments: operations.md
+  - API: api.md
+  - Configuration: configuration.md
+  - Database: database.md
+  - Deployment: deployment.md
+  - Operations runbook: operations.md
+  - Security: security.md
+  - Decisions (ADR):
+      - adr/0001-modular-monolith.md
+      - adr/0002-ecs-fargate-blue-green.md
 plugins:
   - techdocs-core
