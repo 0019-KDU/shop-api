@@ -15,7 +15,7 @@ locals {
 # password and keeps it in Secrets Manager; ECS injects it at container start.
 module "db" {
   count                 = var.use_database ? 1 : 0
-  source                = "git::https://github.com/0019-KDU/idp-platform.git//infra/modules/rds-postgres?ref=main"
+  source                = "git::https://github.com/0019-KDU/platform-infra.git//modules/rds-postgres?ref=v1.0.0"
   name                  = local.name
   environment           = var.environment
   kind                  = "svc"
@@ -33,13 +33,13 @@ locals {
 }
 
 module "bindings" {
-  source      = "git::https://github.com/0019-KDU/idp-platform.git//infra/modules/service-bindings?ref=main"
+  source      = "git::https://github.com/0019-KDU/platform-infra.git//modules/service-bindings?ref=v1.0.0"
   environment = var.environment
   bindings    = local.bindings
 }
 
 module "service" {
-  source      = "git::https://github.com/0019-KDU/idp-platform.git//infra/modules/ecs-service?ref=main"
+  source      = "git::https://github.com/0019-KDU/platform-infra.git//modules/ecs-service?ref=v1.0.0"
   name        = local.name
   environment = var.environment
   image       = local.image
