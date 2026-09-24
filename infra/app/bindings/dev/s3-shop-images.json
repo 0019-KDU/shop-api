@@ -1,0 +1,1 @@
+{"type": "s3", "name": "shop-images", "access": "read-write", "env_prefix": "SHOP_IMAGES"}
